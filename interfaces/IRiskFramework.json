@@ -1,0 +1,521 @@
+[
+  {
+    "inputs": [],
+    "name": "InvalidPoolTypeIndex",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidTokenInput",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LengthMismatched",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotEnoughExposureCredit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotEnoughPoolCredit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotEnoughPoolTypeCredit",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotEnoughTVLCap",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotLendingProxy",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ZeroPoolTypeIndex",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tvl",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetBorrowedCapUSDE36",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "credit",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetCredit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oracle",
+        "type": "address"
+      }
+    ],
+    "name": "SetOracle",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "typeIndex",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "uTokens",
+        "type": "address[]"
+      }
+    ],
+    "name": "SetPoolInfo",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint8",
+        "name": "typeIndex",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "credit",
+        "type": "uint128"
+      }
+    ],
+    "name": "SetPoolTypeCredit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "exposeTo",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint120",
+        "name": "credit",
+        "type": "uint120"
+      }
+    ],
+    "name": "SetTokenExposureLimitAmount",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "exposeTo",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "percentageBPS",
+        "type": "uint16"
+      }
+    ],
+    "name": "SetTokenExposureLimitPercentageBPS",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "borrowedCapUSDs",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "borrowedTVLCap",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "credits",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "credit",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "getPoolInfo",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "poolTypeIndex",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address[]",
+        "name": "uTokens",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "oracle",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "index",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "poolTypeCredits",
+    "outputs": [
+      {
+        "internalType": "uint128",
+        "name": "usedCredit",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "credit",
+        "type": "uint128"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "setBorrowedCapUSDE36",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_tokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_credits",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "setCredits",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_oracle",
+        "type": "address"
+      }
+    ],
+    "name": "setOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "poolTypeIndex",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address[]",
+        "name": "uTokens",
+        "type": "address[]"
+      }
+    ],
+    "name": "setPoolInfo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "_typeIndex",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_tokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint128[]",
+        "name": "_credits",
+        "type": "uint128[]"
+      }
+    ],
+    "name": "setPoolTypeCredits",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_tokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[][]",
+        "name": "_exposedTokens",
+        "type": "address[][]"
+      },
+      {
+        "internalType": "uint120[][]",
+        "name": "_amounts",
+        "type": "uint120[][]"
+      }
+    ],
+    "name": "setTokenExposureLimitAmounts",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_tokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[][]",
+        "name": "_exposedTokens",
+        "type": "address[][]"
+      },
+      {
+        "internalType": "uint16[][]",
+        "name": "_percentageBPSs",
+        "type": "uint16[][]"
+      }
+    ],
+    "name": "setTokenExposureLimitPercentageBPSs",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "exposeTo",
+        "type": "address"
+      }
+    ],
+    "name": "tokenExposureInfos",
+    "outputs": [
+      {
+        "internalType": "uint120",
+        "name": "exposedAmount",
+        "type": "uint120"
+      },
+      {
+        "internalType": "uint120",
+        "name": "exposureLimitAmount",
+        "type": "uint120"
+      },
+      {
+        "internalType": "uint16",
+        "name": "exposureLimitPercentage",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "internalType": "uint128",
+        "name": "amount",
+        "type": "uint128"
+      },
+      {
+        "internalType": "bool",
+        "name": "isIncreased",
+        "type": "bool"
+      }
+    ],
+    "name": "updateUsedCredits",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
