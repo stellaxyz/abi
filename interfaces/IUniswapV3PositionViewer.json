@@ -1,0 +1,407 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_positionManager",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_strategy",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_oracle",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_config",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_uniV3NPM",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "DebtRatioError",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "calcLiquidationInfo",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "netPnLE36",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "requiredPayAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "positionOpenUSDValueE36",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "sharingProfitTokenAmts",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "calcProfitInfo",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "netPnLE36",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lenderProfitUSDValueE36",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "borrowTotalUSDValueE36",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "positionOpenUSDValueE36",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "sharingProfitTokenAmts",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "config",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBorrowCreditE36",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "borrowCreditE36",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCollateralCreditE36",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "collateralCreditE36",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getLiquidationDiscountMultiplierE18",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "liquidationDiscountMultiplierE18",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPendingFeeAmts",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "fees",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPositionDebtRatioE18",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "debtRatioE18",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPositionDebts",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "tokens",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint128[]",
+        "name": "debts",
+        "type": "uint128[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPositionUSDValueE36",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "isPositionHealthy",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_posId",
+        "type": "uint256"
+      }
+    ],
+    "name": "isValidPosition",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "oracle",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "positionManager",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "strategy",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "uniV3NPM",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
