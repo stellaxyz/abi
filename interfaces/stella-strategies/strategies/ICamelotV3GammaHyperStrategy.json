@@ -1,0 +1,765 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AddressMismatched",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minAmt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxAmt",
+          "type": "uint256"
+        }
+      ],
+      "name": "BorrowAmtOutOfRange",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DeadlinePassed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "IncorrectETHAmt",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "repayAmt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "borrowAmt",
+          "type": "uint256"
+        }
+      ],
+      "name": "IncorrectRepayAmt",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvalidPositionId",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidTakeToken",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "InvalidTarget",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LengthMismatched",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "lpLiquidity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minLp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityLessThanExpected",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MaxPayAmountExceeded",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum IBaseHyperStrategy.ErrorStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "NotAllow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotEOA",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotExactIn",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum PositionStatus",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "PositionNotActive",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum PositionStatus",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "name": "PositionNotLiquidatable",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "SwapFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SwapZeroAmount",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "realAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expectAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokenAmountLessThanExpected",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferETHFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroValue",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "tokenAmts",
+          "type": "int256[]"
+        }
+      ],
+      "name": "AdjustExtraColls",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "positionStartUSDValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "lenderProfit",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "netPnL",
+          "type": "int256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "underlyingTokenAmts",
+          "type": "uint256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "rewardAmts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "ClosePosition",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "lenderProfitUSDValueE36",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "positionStartUSDValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "netPnL",
+          "type": "int256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "liquidateAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "liqTimestamp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "debtRatio",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "shareProfitAmts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "LiquidatePosition",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "referralCode",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128[]",
+          "name": "inputAmts",
+          "type": "uint128[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "lendingProxies",
+          "type": "address[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[][]",
+          "name": "borrowAmts",
+          "type": "uint256[][]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "extraPosInfo",
+          "type": "bytes"
+        }
+      ],
+      "name": "OpenPosition",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "tokens",
+          "type": "address[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "shareProfitAmts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "ProfitShared",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gateway",
+          "type": "address"
+        }
+      ],
+      "name": "SetGateway",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "name": "SetMaxPositionDuration",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "posId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "int256[]",
+              "name": "tokenAmts",
+              "type": "int256[]"
+            }
+          ],
+          "internalType": "struct IBaseHyperStrategy.AdjustExtraCollParams",
+          "name": "_params",
+          "type": "tuple"
+        }
+      ],
+      "name": "adjustExtraColls",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_router",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_tokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_amts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "posId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint128[]",
+              "name": "addAmts",
+              "type": "uint128[]"
+            },
+            {
+              "internalType": "uint128[]",
+              "name": "minUnderlyingAmts",
+              "type": "uint128[]"
+            },
+            {
+              "internalType": "uint128[]",
+              "name": "minRewardAmts",
+              "type": "uint128[]"
+            },
+            {
+              "internalType": "bytes",
+              "name": "extraData",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IBaseHyperStrategy.ClosePositionParams",
+          "name": "_params",
+          "type": "tuple"
+        }
+      ],
+      "name": "closePosition",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "underlyingAmts",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "rewardAmts",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "config",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gateway",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "posOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "posId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxPayAmount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IBaseHyperStrategy.LiquidatePositionParams",
+          "name": "_params",
+          "type": "tuple"
+        }
+      ],
+      "name": "liquidatePosition",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint128[]",
+              "name": "inputAmts",
+              "type": "uint128[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "lendingProxies",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[][]",
+              "name": "borrowAmts",
+              "type": "uint256[][]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minLp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint16",
+              "name": "referralCode",
+              "type": "uint16"
+            },
+            {
+              "internalType": "bytes",
+              "name": "extraData",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct IBaseHyperStrategy.OpenPositionParams",
+          "name": "_params",
+          "type": "tuple"
+        }
+      ],
+      "name": "openPosition",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "posId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "positionManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gateway",
+          "type": "address"
+        }
+      ],
+      "name": "setGateway",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_maxDuration",
+          "type": "uint32"
+        }
+      ],
+      "name": "setMaxPositionDuration",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}
